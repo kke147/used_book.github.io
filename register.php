@@ -16,9 +16,6 @@ if ($conn->connect_error) {
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-
-
-
 // 假设验证通过，将数据插入到数据库中
 $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
 
