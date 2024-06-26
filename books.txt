@@ -1,0 +1,12 @@
+
+
+
+
+ INSERT INTO used_book (title, author, category, image_url)
+    -> VALUES ('计算机科学', '计', '科技类', 'https://github.com/kke147/used_book.github.io/blob/main/ji.png')
+    -> VALUES ('生物学', '生', '科技类', 'https://github.com/kke147/used_book.github.io/blob/main/sheng.png')
+    -> VALUES ('中国古代史', '古', '历史类', 'https://github.com/kke147/used_book.github.io/blob/main/zg.png'）
+    -> VALUES ('世界近代史', '近', '历史类', 'https://github.com/kke147/used_book.github.io/blob/main/shijie.png')
+    -> VALUES ('小说', '小', '文学类', 'https://github.com/kke147/used_book.github.io/blob/main/xiaoshuo.png')
+    -> VALUES ('诗歌', '诗', '文学类', 'https://github.com/kke147/used_book.github.io/blob/main/shige.png')
+    -> VALUES ('散文', '散', '文学类', 'https://github.com/kke147/used_book.github.io/blob/main/san.png');
