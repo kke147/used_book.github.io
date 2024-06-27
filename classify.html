@@ -1,18 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="zh">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="classify.css">
-    <script src="getBooks.js"></script>
     <base href="https://kke147.github.io/used_book.github.io/">
-
     <title>图书分类</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "getBooks.php", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var books = JSON.parse(xhr.responseText);
+                    displayBooks(books);
+                }
+            };
+            xhr.send();
+        });
 
+        function displayBooks(books) {
+            var bookList = document.querySelector(".book-list");
+            bookList.innerHTML = ""; // 清空现有的书籍列表
+
+            books.forEach(function(book) {
+                var bookItem = document.createElement("div");
+                bookItem.classList.add("book-item");
+
+                bookItem.innerHTML = `
+                    <h3>${book.title}</h3>
+                    <p>作者: ${book.author}</p>
+                    <p>价格: ${book.price}</p>
+                    <button>添加到购物车</button>
+                `;
+
+                bookList.appendChild(bookItem);
+            });
+        }
+    </script>
 </head>
-
 <body>
     <header>
         <h1 aria-label="二手书商城">二手书商城   </h1>
@@ -26,31 +52,8 @@
         <a href="register.html">注册</a>
         <a href="us.html">关于我们</a>
     </nav>
-
-    <div class="book-category">
-        <h2>文学类</h2>
-        <ul>
-            <li>小说</li>
-            <li>诗歌</li>
-            <li>散文</li>
-        </ul>
-        <h2>科技类</h2>
-        <ul>
-            <li>计算机科学</li>
-            <li>生物学</li>
-
-        </ul>
-        <h2>历史类</h2>
-        <ul>
-            <li>中国古代史</li>
-            <li>世界近代史</li>
-
-        </ul>
-    </div>
     <div class="book-list">
-        <?php include 'connect.php';?>
+        <!-- 书籍信息将在这里显示 -->
     </div>
-
 </body>
-
 </html>
